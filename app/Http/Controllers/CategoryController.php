@@ -37,6 +37,7 @@ class CategoryController extends Controller
             return Redirect()->route('addCategory')->with($notification);
         }
     }
+
     public function showCategory(){
         $category=Category::all();
         return view('admin/category/allCategory',compact('category'));

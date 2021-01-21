@@ -9,11 +9,18 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\CartController;
+
+
 
 //frontend
-
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/productByCategory/{id}', [HomeController::class, 'show_product_category']);
+Route::get('/productByBrand/{id}', [HomeController::class, 'show_product_brand']);
+Route::get('/view_product_details/{id}', [HomeController::class, 'view_product_details']);
 
+//cart
+Route::post('/addToCart', [CartController::class, 'addToCart'])->name('/addToCart');
 
 //backend
 Route::get('/admin', [AdminController::class, 'index']);
@@ -74,3 +81,7 @@ Route::post('/updateSlider/{id}', [SliderController::class, 'updateSlider']);
 
 Route::get('/active/{id}', [SliderController::class, 'active']);
 Route::get('/inactive/{id}', [SliderController::class, 'inactive']);
+
+
+
+//fronted route

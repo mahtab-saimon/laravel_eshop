@@ -138,6 +138,8 @@
     </div><!--/header-bottom-->
 </header><!--/header-->
 
+<!--slider-->
+<!--/slider-->
 <section id="slider"><!--slider-->
     <div class="container">
         <div class="row">
@@ -159,7 +161,7 @@
                     <div class="carousel-inner" role="listbox">
                         @foreach( $al_publish_slider as $v_slider )
                             <div class="item {{ $loop->first ? ' active' : '' }}" >
-                                <img src="{{ $v_slider->image }}"  style="width: 100%; height: 380px;" >
+                                <img src="{{ url($v_slider->image) }}"  style="width: 100%; height: 380px;" >
                             </div>
                         @endforeach
                     </div>
@@ -186,74 +188,6 @@
                 <div class="left-sidebar">
                     <h2>Category</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Sportswear
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="sportswear" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Nike </a></li>
-                                        <li><a href="#">Under Armour </a></li>
-                                        <li><a href="#">Adidas </a></li>
-                                        <li><a href="#">Puma</a></li>
-                                        <li><a href="#">ASICS </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Mens
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="mens" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Fendi</a></li>
-                                        <li><a href="#">Guess</a></li>
-                                        <li><a href="#">Valentino</a></li>
-                                        <li><a href="#">Dior</a></li>
-                                        <li><a href="#">Versace</a></li>
-                                        <li><a href="#">Armani</a></li>
-                                        <li><a href="#">Prada</a></li>
-                                        <li><a href="#">Dolce and Gabbana</a></li>
-                                        <li><a href="#">Chanel</a></li>
-                                        <li><a href="#">Gucci</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#womens">
-                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Womens
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="womens" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul>
-                                        <li><a href="#">Fendi</a></li>
-                                        <li><a href="#">Guess</a></li>
-                                        <li><a href="#">Valentino</a></li>
-                                        <li><a href="#">Dior</a></li>
-                                        <li><a href="#">Versace</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                         @php(
                             $al_publish_category=DB::table('categories')
                                                    ->where('status',1)
@@ -262,11 +196,12 @@
                         @foreach($al_publish_category as $cat)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="#">{{$cat->category_name}}</a></h4>
+                                    <h4 class="panel-title"><a href="{{URL::to('/productByCategory/'.$cat->id)}}">{{$cat->category_name}}</a></h4>
                                 </div>
                             </div>
                         @endforeach
-                    </div><!--/category-products-->
+                    </div>
+                    <!--/category-products-->
 
                     <div class="brands_products"><!--brands_products-->
                         <h2>Brands</h2>
@@ -278,7 +213,7 @@
                                                ->get()
                                                )
                             @foreach($al_publish_brand as $brand)
-                                <li><a href="#"> <span class="pull-right">(4)</span>{{$brand->brand_name}}</a></li>
+                                <li><a href="{{URL::to('/productByBrand/'.$brand->id)}}"> <span class="pull-right">(4)</span>{{$brand->brand_name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
