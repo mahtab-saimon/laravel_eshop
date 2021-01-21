@@ -16,9 +16,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 //backend
-Route::get('/logout', [superAdminController::class, 'logout']);
 Route::get('/admin', [AdminController::class, 'index']);
-Route::get('dashboard', [superAdminController::class, 'index']);
+Route::get('/logout', [superAdminController::class, 'logout']);
+Route::get('/dashboard', [superAdminController::class, 'index']);
 Route::post('/admin_dashboard', [AdminController::class, 'dashboard'])->name('/admin_dashboard');
 
 //category

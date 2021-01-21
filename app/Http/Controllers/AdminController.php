@@ -27,7 +27,8 @@ class AdminController extends Controller
           if ($admin){
               $request->session()->put('admin_name',$admin->admin_name);
               $request->session()->put('admin_id',$admin->id);
-              return redirect('dashboard');
+              $request->session('messege','Login Successful');
+              return redirect('/dashboard');
              // return redirect()->route('admin.dashboard');
           } else{
               $request->session()->put('messege','Email and password Invalid');

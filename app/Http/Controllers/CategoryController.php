@@ -22,6 +22,7 @@ class CategoryController extends Controller
         $category->category_description=$request-> category_description;
 
         $category->save();
+
         if ($category) {
             $notification = array(
                 'messege' => 'Successfully Inserted',
