@@ -40,16 +40,19 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="{{$content->qty}}" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                                <form action="{{route('/updateCart')}}" method="post">
+                                    @csrf
+                                    <input class="cart_quantity_input" type="text" name="qty" value="{{$content->qty}}" autocomplete="off" size="2">
+                                    <button type="submit" class="btn btn-info btn-sm">update</button>
+                                    <input class="cart_quantity_input" type="hidden" name="rowId" value="{{$content->rowId}}" autocomplete="off" size="2">
+                                </form>
                             </div>
                         </td>
                         <td class="cart_total">
                             <p class="cart_total_price">{{$content->total}}</p>
                         </td>
                         <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                            <a class="cart_quantity_delete" href="{{URL::to('/removeAnItem/'.$content->rowId)}}"><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -130,7 +133,7 @@
                             <li>Total <span>{{Cart::total()}}</span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
+                        <a class="btn btn-default check_out" href="{{URL::to('/loginCustomer')}}">Check Out</a>
                     </div>
                 </div>
             </div>

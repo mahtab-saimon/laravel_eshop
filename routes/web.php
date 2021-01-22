@@ -10,6 +10,8 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerController;
 
 
 
@@ -21,7 +23,17 @@ Route::get('/view_product_details/{id}', [HomeController::class, 'view_product_d
 
 //cart
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('/addToCart');
+Route::post('/updateCart', [CartController::class, 'update'])->name('/updateCart');
 Route::get('/showCart', [CartController::class, 'showCart']);
+Route::get('/removeAnItem/{rowId}', [CartController::class, 'remove']);
+
+//checkout
+Route::get('/loginCustomer', [CheckoutController::class, 'login']);
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+//customer
+Route::post('/registration', [CustomerController::class,'registration'])->name('/registration');
+
+
 
 //backend
 Route::get('/admin', [AdminController::class, 'index']);

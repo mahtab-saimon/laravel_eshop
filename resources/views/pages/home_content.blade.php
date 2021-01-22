@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+    @include('slider')
 <h2 class="title text-center">Features Items</h2>
 @foreach($all_publish_product as $pro)
     <div class="col-sm-4">
