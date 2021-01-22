@@ -21,6 +21,7 @@ Route::get('/view_product_details/{id}', [HomeController::class, 'view_product_d
 
 //cart
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('/addToCart');
+Route::get('/showCart', [CartController::class, 'showCart']);
 
 //backend
 Route::get('/admin', [AdminController::class, 'index']);

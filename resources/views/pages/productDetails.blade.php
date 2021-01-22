@@ -51,7 +51,7 @@
                             <label>Quantity:</label>
                             <input name="qty" type="text" value="1" />
                             <input name="pro_id" type="hidden" value="{{$view_product_details->id}}" />
-                            <button type="button" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                            <button type="submit" class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                         </form>
                     </span>
                     <p><b>Availability:</b> In Stock</p>
