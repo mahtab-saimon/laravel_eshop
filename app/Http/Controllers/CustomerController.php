@@ -39,9 +39,6 @@ class CustomerController extends Controller
         }
 
     }
-
-
-
     public function registration(Request $request){
         $validatedData = $request->validate([
             'name' => 'required|max:200',
@@ -60,8 +57,8 @@ class CustomerController extends Controller
         //print_r($data);
        // $data->save();
         if ($customer) {
-            $request->session()->put('id',$customer);
-            $request->session()->put('name',$customer->name);
+            $request->session()->put('customer_id',$customer);
+            $request->session()->put('customer_name',$customer->name);
             $notification = array(
                 'messege' => 'Successfully Inserted',
                 'alert-type' => 'success'

@@ -49,12 +49,14 @@ class PaymentController extends Controller
         }
         if ($payment_getway == 'HandCash') {
             //$request->session()->put('payment_id',$payment_id);
+            Cart::destroy();
             $notification = array(
                 'messege' => 'Successfully Inserted',
                 'alert-type' => 'success'
             );
             return Redirect('/afterPayment')->with($notification);
         }elseif ($payment_getway == 'Visa') {
+            Cart::destroy();
             //$request->session()->put('payment_id',$payment_id);
             $notification = array(
                 'messege' => 'Successfully Inserted',
@@ -62,6 +64,7 @@ class PaymentController extends Controller
             );
             return Redirect('/afterPayment')->with($notification);
         }elseif ($payment_getway == 'Paypal') {
+            Cart::destroy();
             //$request->session()->put('payment_id',$payment_id);
             $notification = array(
                 'messege' => 'Successfully Inserted',
@@ -69,6 +72,7 @@ class PaymentController extends Controller
             );
             return Redirect('/afterPayment')->with($notification);
         }elseif ($payment_getway == 'Bkash') {
+            Cart::destroy();
             //$request->session()->put('payment_id',$payment_id);
             $notification = array(
                 'messege' => 'Successfully Inserted',
@@ -76,6 +80,7 @@ class PaymentController extends Controller
             );
             return Redirect('/afterPayment')->with($notification);
         } else {
+            Cart::destroy();
             $notification = array(
                 'messege' => 'Not Inserted',
                 'alert-type' => 'error'

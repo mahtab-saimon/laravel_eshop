@@ -46,7 +46,7 @@ class CheckoutController extends Controller
         // $data->save();
         if ($shipping_id) {
             //Cart::destroy();
-            $request->session()->put('shipping_id',$shipping_id->id);
+            $request->session()->put('shipping_id',$shipping_id);
         //    $request->session()->put('name',$request->name);
             $notification = array(
                 'messege' => 'Successfully Inserted',

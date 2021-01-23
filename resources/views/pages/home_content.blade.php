@@ -2,6 +2,15 @@
 @section('content')
     @include('slider')
 <h2 class="title text-center">Features Items</h2>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 @foreach($all_publish_product as $pro)
     <div class="col-sm-4">
         <div class="product-image-wrapper">

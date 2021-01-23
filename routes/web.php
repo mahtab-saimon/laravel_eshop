@@ -13,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\orderController;
 
 
 
@@ -50,6 +51,15 @@ Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/logout', [superAdminController::class, 'logout']);
 Route::get('/dashboard', [superAdminController::class, 'index']);
 Route::post('/admin_dashboard', [AdminController::class, 'dashboard'])->name('/admin_dashboard');
+
+//manage Order
+Route::get('/manageOrder', [OrderController::class, 'manageOrder']);
+
+
+Route::get('/editOrder/{id}', [OrderController::class, 'edit']);
+Route::get('/viewOrder/{id}', [OrderController::class, 'show']);
+Route::get('/deleteOrder/{id}', [OrderController::class, 'delete']);
+Route::post('/updateOrder/{id}', [OrderController::class, 'update']);
 
 //category
 Route::get('/addCategory', [CategoryController::class, 'index'])->name('/addCategory');

@@ -6,6 +6,15 @@
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>Login to your account</h2>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{route('/loginAccount')}}" method="post">
                             @csrf
                             <input name="email" type="email" placeholder="Email Address" />

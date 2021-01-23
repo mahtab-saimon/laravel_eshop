@@ -49,7 +49,15 @@
             </div>
         </div>
     </div><!--/header_top-->
-
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="header-middle"><!--header-middle-->
         <div class="container">
             <div class="row">
@@ -81,11 +89,15 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    @php( $customer = Session::get('id') )
+                    @php( $customer = Session::get('customer_name') )
                     @php(  $shipping_id = Session::get('shipping_id') )
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                            @if($customer != NULL)
+                                <li><a href="#"><i class="fa fa-user"></i> {{Session::get('customer_name')}}</a></li>
+                            @else
+                                <li><a href="#"><i class="fa fa-user"></i>Account</a></li>
+                            @endif
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             @if($customer != NULL && $shipping_id == NULL)
                                 <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>

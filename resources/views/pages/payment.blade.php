@@ -8,6 +8,15 @@
                     <li class="active">Shopping Cart</li>
                 </ol>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="table-responsive cart_info">
                 <?php
                 $contents=Cart::content();

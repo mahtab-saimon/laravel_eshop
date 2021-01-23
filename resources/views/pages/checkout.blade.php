@@ -12,7 +12,15 @@
             <div class="register-req">
                 <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
             </div><!--/register-req-->
-
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="shopper-informations">
                 <div class="row">
                     <div class="col-sm-12  clearfix">
