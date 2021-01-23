@@ -6,7 +6,7 @@
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>Login to your account</h2>
-                        <form action="" method="post">
+                        <form action="{{route('/loginAccount')}}" method="post">
                             @csrf
                             <input name="email" type="email" placeholder="Email Address" />
                             <input name="password" type="password" placeholder="Password" />

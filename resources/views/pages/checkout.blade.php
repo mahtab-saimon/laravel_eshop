@@ -19,14 +19,14 @@
                         <div class="bill-to">
                             <p>Bill To</p>
                             <div class="form-one">
-                                <form>
-                                    <input type="text" placeholder="Name">
-                                    <input type="text" placeholder="Email*">
-                                    <input type="text" placeholder="Address ">
-                                    <input type="text" placeholder="Phone">
-                                    <input type="text" placeholder="Phone">
-                                    <input type="text" placeholder="Country">
-                                    <input type="text" placeholder="City">
+                                <form action="{{route('/shipping')}}" method="post">
+                                    @csrf
+                                    <input name="name" type="text" placeholder="Name">
+                                    <input name="email" type="text" placeholder="Email">
+                                    <input name="address" type="text" placeholder="Address ">
+                                    <input name="phone" type="text" placeholder="Phone">
+                                    <input name="country" type="text" placeholder="Country">
+                                    <input name="city" type="text" placeholder="City">
                                     <button type="submit" class="btn btn-warning btn-block">Done</button>
                                 </form>
                             </div>

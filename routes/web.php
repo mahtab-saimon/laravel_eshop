@@ -12,6 +12,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -29,9 +30,18 @@ Route::get('/removeAnItem/{rowId}', [CartController::class, 'remove']);
 
 //checkout
 Route::get('/loginCustomer', [CheckoutController::class, 'login']);
+Route::get('/logoutCustomer', [CheckoutController::class, 'logout']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::post('/shipping', [CheckoutController::class, 'shipping'])->name('/shipping');
+
+//payment
+Route::get('/payment', [PaymentController::class, 'payment']);
+Route::post('/orderPlace', [PaymentController::class, 'orderPlace'])->name('/orderPlace');
+Route::get('/afterPayment', [PaymentController::class, 'afterPayment']);
+
 //customer
 Route::post('/registration', [CustomerController::class,'registration'])->name('/registration');
+Route::post('/loginAccount', [CustomerController::class,'login'])->name('/loginAccount');
 
 
 
